@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>geekTalks</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="/geektalks.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container">
+		  <a class="navbar-brand" href="/geektalks/"><i class="fas fa-code-branch"></i> GeekTalks</a>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+		  </button>
+		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		    <ul class="navbar-nav mr-auto">
+		    <% if (typeof talk != "undefined") { %>
+		      <li class="nav-item">
+		        <a class="nav-link" href="/geektalks/<%=talk.tag%>"><%=talk.tag%></a>
+		      </li>
+		    <% } %>		    	
+		    </ul>
+		    <ul class="navbar-nav">
+		      <li class="nav-item">
+		        <a class="nav-link" href="/geektalks/new/">New Talk</a>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link" href="/geektalks/">Sign Up <span class="sr-only">(current)</span></a>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link" href="/geektalks/new/">Login</a>
+		      </li>
+		    </ul> 	
+		  </div>  
+    	</div>
+	</nav> 
