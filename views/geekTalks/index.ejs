@@ -42,7 +42,7 @@
             <div class="card mb-1">
               <div class="card-body">
                 <h2 class="card-title"><%=talk.title%></h2> 
-                <p class="card-text blog-post-meta"><%=talk.created.toDateString()%> by <a href="#">Mark</a></p>
+                <p class="card-text blog-post-meta"><%=talk.created.toDateString()%> by <a href="#"><%=talk.user.username%></a></p>
                 <p class="card-text"><%- talk.body.substring(0, 100)%></p>
                 <p><a class="btn btn-primary" href="/geektalks/<%=talk.tag%>/<%=talk._id%>">
                 Read More
