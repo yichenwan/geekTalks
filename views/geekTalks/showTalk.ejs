@@ -1,0 +1,41 @@
+<% include ../partials/header %>
+    <div class="row my-2">
+    	<div class="col-md-2">
+    	</div>
+    	<div class="col-md-8">
+			<div class="card px-1 border-0">
+			  <div class="card-body">
+			    <h2 class="card-title text-center"><%=talk.title%></h2>
+			    <p class="card-text blog-post-meta text-center"><%=talk.created.toDateString()%> by <a href="#">Mark</a></p>
+			    <p class="card-text"><%- talk.body%></p>
+			  </div>
+			</div>    	
+    	</div> 
+    	<div class="col-md-2">
+    	</div>    	   	
+    </div>
+
+    <div class="row my-2">
+    	<div class="col-md-2">
+    	</div>
+    	<div class="col-md-8">
+			<div class="card">
+			  <h5 class="card-header">Comments</h5>		  
+			  <div class="card-body">
+			  <div class="d-flex flex-row-reverse">
+				  <a href="/geektalks/<%=talk.tag%>/<%=talk._id%>/comments/new" 
+			      class="btn btn-success">Add New Comment</a> 			  
+			  </div>	
+		      <hr>			  
+				<% talk.comments.forEach(function(comment) { %>
+					<strong class="card-title"><%= comment.author%></strong>
+					<p class="card-text float-right">10 days ago</p><br>
+					<p class="card-text"><%= comment.text%></p>		
+				<% }); %>			    
+			  </div>
+			</div>	
+    	</div> 
+    	<div class="col-md-2">
+    	</div>    	   	
+    </div>    
+<% include ../partials/footer %>

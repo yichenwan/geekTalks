@@ -6,6 +6,7 @@ var bodyParser       = require("body-parser"),
     app              = express(),
     Talk             = require("./models/talk"),
     Tag  			 = require("./models/tag"),
+    Comment          = require("./models/comment"),
     seedDB           = require("./seeds");
 
 // app config
@@ -29,13 +30,13 @@ var bodyParser       = require("body-parser"),
  			console.log("error");
  		}
  		else {
- 			res.render("index", {talks: talks});
+ 			res.render("geekTalks/index", {talks: talks});
  		}
  	})
  });
 
  app.get("/geektalks/new", function(req, res) {
- 	res.render("new");
+ 	res.render("geekTalks/new");
  });
 
  app.post("/geektalks", function(req, res) {
@@ -63,7 +64,7 @@ var bodyParser       = require("body-parser"),
 		 		}
 		 		else {
 		 			// console.log(foundTag);
- 					res.render("showTag", {talks: foundTalks, foundTag: foundTag});
+ 					res.render("geekTalks/showTag", {talks: foundTalks, foundTag: foundTag});
 		 		}
  			});
  		}
@@ -71,16 +72,48 @@ var bodyParser       = require("body-parser"),
  }); 
 
  app.get("/geektalks/:tag/:id", function(req, res) {
- 	Talk.findById(req.params.id, function(err, foundTalk) {
+ 	Talk.findById(req.params.id).populate("comments").exec(function(err, foundTalk) {
  		if (err) {
  			res.redirect("/geektalks");
  		}
  		else {
- 			// console.log(foundTalk);
- 			res.render("showTalk", {talk: foundTalk});
+ 			console.log(foundTalk);
+ 			res.render("geekTalks/showTalk", {talk: foundTalk});
  		}
  	});
  });
+
+app.get("/geektalks/:tag/:id/comments/new", function(req, res) {
+	Talk.findById(req.params.id, function(err, foundTalk) {
+		if (err) {
+			res.redirect(`/geektalks/${req.params.tag}/${req.params.id}/`);
+		}
+		else {
+			res.render("comment/new", {talk: foundTalk});
+		}
+	})
+});
+
+app.post("/geektalks/:tag/:id/comments", function(req, res) {
+	Talk.findById(req.params.id, function(err, foundTalk) {
+		if (err) {
+			res.redirect(`/geektalks/${req.params.tag}/${req.params.id}/`);
+		}
+		else {
+			Comment.create(req.body.comment, function (err, comment) {
+				if (err) {
+					res.redirect(`/geektalks/${req.params.tag}/${req.params.id}/`);
+				}
+				else {
+					foundTalk.comments.push(comment);
+					foundTalk.save();
+					console.log(foundTalk);
+					res.redirect(`/geektalks/${req.params.tag}/${req.params.id}/`);
+				}
+			});
+		}
+	});
+})
 
 app.listen(3000, process.env.IP, function(){
     console.log("SERVER IS RUNNING!");

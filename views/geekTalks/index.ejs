@@ -1,19 +1,37 @@
-<% include partials/header %>
-<div class="container">
-  <div class="card mb-3">
-      <div class="row">
-          <div class="col-md-7 py-2">
-              <img src="<%=foundTag.img%>" class="img-thumbnail img-style" alt="">
-          </div>
-          <div class="col-md-5">
-              <div class="card-block my-4">
-                  <h4 class="card-title"><%=foundTag.tag%></h4>
-                  <p class="card-text "><%=foundTag.description%></p>
-              </div>
-          </div>
-      </div>
-</div>  
+<% include ../partials/header %>
+ <div class="container">  
+   <ul class="nav justify-content-between">     
+        <li class="nav-item">
+            <a class="nav-link" href="/geektalks/Computer Science">Computer Science</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/geektalks/Modern Web">Modern Web</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/geektalks/Mobile App">Mobile App</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/geektalks/AI and Data">AI and Data</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/geektalks/Embedded System">Embedded System</a>
+        </li>    
+        <li class="nav-item">
+            <a class="nav-link" href="/geektalks/Entertainment">Entertainment</a>
+        </li>           
+    </ul> 
+  </div>  
 
+  <div class="container">   
+    <div class="jumbotron p-3 p-md-5 mt-2 text-black rounded">
+      <div class="col-md-6 px-0">
+        <h1 class="display-4 font-italic">Welcome to GeekTalks, let's inspire together</h1>
+        <p class="lead my-3">The place to share your projects, development experiences and reflection on your learning</p>
+        <p class="lead mb-0"><a href="#" class="btn btn-light">Get Start</a></p>
+      </div>
+    </div>
+  </div>
+  
   <main role="main" class="container">
     <div class="row">
       <div class="col-md-8 blog-main">
@@ -50,4 +68,4 @@
     </div><!-- /.row -->
 
   </main><!-- /.container -->
-<% include partials/footer %>
+<% include ../partials/footer %>
