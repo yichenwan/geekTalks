@@ -25,7 +25,10 @@ router.post("/",isLoggedIn, function(req, res) {
 					res.redirect(`/geektalks/${req.params.tag}/${req.params.id}/`);
 				}
 				else {
+					comment.author.id = req.user._id;
+					comment.author.username = req.user.username;
 					foundTalk.comments.push(comment);
+					comment.save();
 					foundTalk.save();
 					console.log(foundTalk);
 					res.redirect(`/geektalks/${req.params.tag}/${req.params.id}/`);

@@ -58,8 +58,8 @@
  			res.redirect("/geektalks");
  		}
  		else {
- 			console.log(foundTalk.user);
- 			console.log(foundTalk.comments);
+ 			// console.log(foundTalk.user);
+ 			// console.log(foundTalk.comments);
  			res.render("geekTalks/showTalk", {talk: foundTalk});
  		}
  	});

@@ -28,7 +28,7 @@
 			  </div>	
 		      <hr>			  
 				<% talk.comments.forEach(function(comment) { %>
-					<strong class="card-title"><%= comment.author%></strong>
+					<strong class="card-title"><%= comment.author.username%></strong>
 					<p class="card-text float-right">10 days ago</p><br>
 					<p class="card-text"><%= comment.text%></p>		
 				<% }); %>			    
