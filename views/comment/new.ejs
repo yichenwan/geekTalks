@@ -1,6 +1,6 @@
 <% include ../partials/header %>
 <form class="new-form" action="/geektalks/<%=talk.tag%>/<%=talk._id%>/comments/" method="POST">
-	<h2>Add a comment to <%=talk.title%></h2>
+	<h1>Add a comment to <%=talk.title%></h1>
 	<div class="form-group">
 		<label>Comment</label>
 		<textarea class="form-control" name="comment[text]" rows="5" cols="33"></textarea>

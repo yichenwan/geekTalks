@@ -65,6 +65,29 @@
  	});
  });
 
+ router.get("/:tag/:id/edit", function(req, res) {
+ 	Talk.findById(req.params.id, function(err, foundTalk) {
+ 		res.render("geekTalks/edit", {talk: foundTalk});
+ 	});
+ });
+
+ router.put("/:tag/:id", function(req, res) {
+ 	Talk.findByIdAndUpdate(req.params.id, req.body.talk, function(err, updateTalk){
+ 		if (err) {
+ 			res.redirect("/geektalks");
+ 		}
+ 		else {
+ 			res.redirect(`/geektalks/${req.params.tag}/${req.params.id}/`);
+ 		}
+ 	});
+ });
+
+ router.delete("/:tag/:id", function(req, res) {
+ 	Talk.findByIdAndRemove(req.params.id, function(err) {
+ 		res.redirect("/geektalks");
+ 	});
+ });
+
  function isLoggedIn(req, res, next) {
 	if (req.isAuthenticated()) {
 		return next();
