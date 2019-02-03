@@ -16,9 +16,11 @@ router.post("/register", function(req, res) {
 		req.body.password, function(err, user) {
 			if (err) {
 				console.log(err);
+				req.flash("error", err.message);
 				return res.redirect("/register");
 			}
 			passport.authenticate("local")(req, res, function() {
+				req.flash("success", "Welcome to Geektalks, " + user.username);
 				res.redirect("/geektalks");
 			});
 		});
@@ -35,16 +37,8 @@ router.post("/login", passport.authenticate("local",{
 
 router.get("/logout", function(req, res){
 	req.logout();
-	res.redirect("/");
+	req.flash("success", "Logged you out.");		
+	res.redirect("/geektalks");
 });
-
-function isLoggedIn(req, res, next) {
-	if (req.isAuthenticated()) {
-		return next();
-	}
-	else {
-		res.redirect('/login');
-	}
-};
 
 module.exports = router;

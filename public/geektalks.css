@@ -128,7 +128,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .jumbotron {
-  background: #ffaa80;
+  background: #476b6b;
+/*  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOCrYrF3k1UOmSRGVHtSi-TjRKLldmU7sxvVBho7nuDmHRez8nEw);
+  background-repeat: no-repeat;
+  background-size: cover;*/
+}
+
+#welcome-message {
+  color: white;
 }
 
 .tag-title {

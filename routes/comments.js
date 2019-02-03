@@ -32,6 +32,7 @@ router.post("/",middleware.isLoggedIn, function(req, res) {
 					comment.save();
 					foundTalk.save();
 					console.log(foundTalk);
+					req.flash("success", "Successfully added comment");
 					res.redirect(`/geektalks/${req.params.tag}/${req.params.id}/`);
 				}
 			});
@@ -67,6 +68,7 @@ router.delete("/:comment_id/", middleware.checkCommentOwenership, function(req, 
 			res.redirect("back");
 		}
 		else {
+			req.flash("success", "Comment deleted");
 			res.redirect(`/geektalks/${req.params.tag}/${req.params.id}/`);
 		}
 	})

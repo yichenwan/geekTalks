@@ -8,6 +8,7 @@ middlewareObj.isLoggedIn =  function (req, res, next) {
 		return next();
 	}
 	else {
+		req.flash("error", "Please login first.");
 		res.redirect("/login");
 	}
 };
@@ -23,12 +24,14 @@ middlewareObj.checkTalkOwenership = function (req, res, next) {
 					next();
 				}
 				else {
+					req.flash("error", "You don't have permission to do that");					
 					res.redirect("back");
 				}
 			}
 		});
 	}
 	else {
+		req.flash("error", "Please login first.");
 		res.redirect("back");
 	}	
 };
@@ -44,12 +47,14 @@ middlewareObj.checkCommentOwenership = function(req, res, next) {
 					next();
 				}
 				else {
+					req.flash("error", "You don't have permission to do that");		
 					res.redirect("back");
 				}
 			}
 		});
 	}
 	else {
+		req.flash("error", "Please login first.");
 		res.redirect("back");
 	}	
 };

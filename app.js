@@ -12,7 +12,8 @@ var bodyParser       = require("body-parser"),
     session          = require("express-session"),
     passport         = require("passport"),
     LocalStrategy    = require("passport-local"),
-    passportLocalMongoose = require("passport-local-mongoose");
+    passportLocalMongoose = require("passport-local-mongoose"),
+    flash            = require("connect-flash");
 
 var geektalkRoutes   = require("./routes/geektalks"),
 	commentRoutes    = require("./routes/comments"),
@@ -26,6 +27,7 @@ var geektalkRoutes   = require("./routes/geektalks"),
  app.use(bodyParser.urlencoded({extended: true}));
  app.use(expressSanitizer());
  app.use(methodOverride("_method"));
+ app.use(flash());
 
  seedDB();
 
@@ -45,6 +47,8 @@ passport.deserializeUser(User.deserializeUser());
 
  app.use(function(req, res, next) {
  	res.locals.currentUser = req.user;
+ 	res.locals.error = req.flash("error");
+ 	res.locals.success = req.flash("success");
  	next();
  });
 

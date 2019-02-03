@@ -27,7 +27,8 @@
       }
       else {
 		newTalk.user = req.user;
-		newTalk.save();		    	
+		newTalk.save();	
+		req.flash("success", "Successfully added talk");	    	
       	res.redirect("/geektalks");     	
       }
  	});
@@ -85,6 +86,7 @@
 
  router.delete("/:tag/:id", middleware.checkTalkOwenership,function(req, res) {
  	Talk.findByIdAndRemove(req.params.id, function(err) {
+ 		req.flash("success", "talk deleted");
  		res.redirect("/geektalks");
  	});
  });
