@@ -36,7 +36,14 @@
 				<% talk.comments.forEach(function(comment) { %>
 					<strong class="card-title"><%= comment.author.username%></strong>
 					<p class="card-text float-right">10 days ago</p><br>
-					<p class="card-text"><%= comment.text%></p>		
+					<p class="card-text"><%= comment.text%></p>
+					<% if (currentUser && comment.author.id.equals(currentUser._id)) {%>
+					  	<a href="/geektalks/<%=talk.tag%>/<%=talk._id%>/comments/<%=comment._id%>/edit" 
+				      class="btn btn-xs btn-success">Edit</a>
+				      <form id="delete-form" action="/geektalks/<%=talk.tag%>/<%=talk._id%>/comments/<%=comment._id%>/?_method=DELETE" method="POST">
+				      	<button class="btn btn-xs btn-danger">Delete</button>
+				      </form><br> 		
+				    <% } %>					
 				<% }); %>			    
 			  </div>
 			</div>	

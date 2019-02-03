@@ -1,11 +1,13 @@
 <% include ../partials/header %>
+<h1 class="text-center">Add a comment to <%=talk.title%></h1>
 <form class="new-form" action="/geektalks/<%=talk.tag%>/<%=talk._id%>/comments/" method="POST">
-	<h1>Add a comment to <%=talk.title%></h1>
 	<div class="form-group">
 		<label>Comment</label>
 		<textarea class="form-control" name="comment[text]" rows="5" cols="33"></textarea>
 	</div>	
 	<button class="btn btn-primary">Submit</button>
 </form>	
-
+<div class="new-form">
+<a href="/geektalks/<%=talk.tag%>/<%=talk._id%>/">Go back</a>
+</div>
 <% include ../partials/footer %>

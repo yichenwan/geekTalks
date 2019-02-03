@@ -38,6 +38,39 @@ router.post("/",isLoggedIn, function(req, res) {
 	});
 });
 
+router.get("/:comment_id/edit", checkTalkOwenership, function(req, res) {
+	Comment.findById(req.params.comment_id, function(err, foundComment) {
+		if (err) {
+			res.redirect("back");
+		}
+		else {
+			res.render("comment/edit", {tag_id: req.params.tag, talk_id: req.params.id, comment: foundComment});
+		}
+	});	
+});
+
+router.put("/:comment_id/", checkTalkOwenership, function(req, res) {
+	Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, updatedComment){
+		if (err) {
+			res.render("back");
+		} 
+		else {
+			res.redirect(`/geektalks/${req.params.tag}/${req.params.id}/`);
+		}
+	});
+});
+
+router.delete("/:comment_id/", checkTalkOwenership, function(req, res) {
+	Comment.findByIdAndRemove(req.params.comment_id, function(err) {
+		if (err) {
+			res.redirect("back");
+		}
+		else {
+			res.redirect(`/geektalks/${req.params.tag}/${req.params.id}/`);
+		}
+	})
+})
+
 function isLoggedIn(req, res, next) {
 	if (req.isAuthenticated()) {
 		return next();
@@ -45,6 +78,27 @@ function isLoggedIn(req, res, next) {
 	else {
 		res.redirect('/login');
 	}
+};
+
+function checkTalkOwenership(req, res, next) {
+	if (req.isAuthenticated()) {	
+		Comment.findById(req.params.comment_id, function(err, foundComment) {
+			if (err) {
+				res.redirect("back");
+			}
+			else {
+				if (foundComment.author.id.equals(req.user._id)) {
+					next();
+				}
+				else {
+					res.redirect("back");
+				}
+			}
+		});
+	}
+	else {
+		res.redirect("back");
+	}	
 };
 
 module.exports = router;
