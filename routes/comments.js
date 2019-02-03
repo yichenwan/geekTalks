@@ -39,7 +39,7 @@ router.post("/",middleware.isLoggedIn, function(req, res) {
 	});
 });
 
-router.get("/:comment_id/edit", middleware.checkTalkOwenership, function(req, res) {
+router.get("/:comment_id/edit", middleware.checkCommentOwenership, function(req, res) {
 	Comment.findById(req.params.comment_id, function(err, foundComment) {
 		if (err) {
 			res.redirect("back");
@@ -50,7 +50,7 @@ router.get("/:comment_id/edit", middleware.checkTalkOwenership, function(req, re
 	});	
 });
 
-router.put("/:comment_id/", middleware.checkTalkOwenership, function(req, res) {
+router.put("/:comment_id/", middleware.checkCommentOwenership, function(req, res) {
 	Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, updatedComment){
 		if (err) {
 			res.render("back");
@@ -61,7 +61,7 @@ router.put("/:comment_id/", middleware.checkTalkOwenership, function(req, res) {
 	});
 });
 
-router.delete("/:comment_id/", middleware.checkTalkOwenership, function(req, res) {
+router.delete("/:comment_id/", middleware.checkCommentOwenership, function(req, res) {
 	Comment.findByIdAndRemove(req.params.comment_id, function(err) {
 		if (err) {
 			res.redirect("back");
