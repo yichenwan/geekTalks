@@ -2,6 +2,7 @@
  var router  = express.Router({mergeParams: true});
  var Talk    = require("../models/talk");
  var Tag     = require("../models/tag");
+ var middleware = require("../middleware");
 
 
  router.get("/", function(req, res) {
@@ -15,11 +16,11 @@
  	});
  });
 
- router.get("/new", isLoggedIn, function(req, res) {
+ router.get("/new", middleware.isLoggedIn, function(req, res) {
  	res.render("geekTalks/new");
  });
 
- router.post("/", isLoggedIn, function(req, res) {
+ router.post("/", middleware.isLoggedIn, function(req, res) {
  	Talk.create(req.body.talk, function (err, newTalk) {
       if (err) {
       	res.render("new");
@@ -65,13 +66,13 @@
  	});
  });
 
- router.get("/:tag/:id/edit", checkTalkOwenership, function(req, res) {
+ router.get("/:tag/:id/edit", middleware.checkTalkOwenership, function(req, res) {
  	Talk.findById(req.params.id, function(err, foundTalk) {
  		res.render("geekTalks/edit", {talk: foundTalk});
  	});
  });
 
- router.put("/:tag/:id", checkTalkOwenership, function(req, res) {
+ router.put("/:tag/:id", middleware.checkTalkOwenership, function(req, res) {
  	Talk.findByIdAndUpdate(req.params.id, req.body.talk, function(err, updateTalk){
  		if (err) {
  			res.redirect("/geektalks");
@@ -82,40 +83,10 @@
  	});
  });
 
- router.delete("/:tag/:id", checkTalkOwenership,function(req, res) {
+ router.delete("/:tag/:id", middleware.checkTalkOwenership,function(req, res) {
  	Talk.findByIdAndRemove(req.params.id, function(err) {
  		res.redirect("/geektalks");
  	});
  });
-
- function isLoggedIn(req, res, next) {
-	if (req.isAuthenticated()) {
-		return next();
-	}
-	else {
-		res.redirect("/login");
-	}
-};
-
-function checkTalkOwenership(req, res, next) {
-	if (req.isAuthenticated()) {	
-		Talk.findById(req.params.id, function(err, foundTalk) {
-			if (err) {
-				res.redirect("back");
-			}
-			else {
-				if (foundTalk.user.equals(req.user._id)) {
-					next();
-				}
-				else {
-					res.redirect("back");
-				}
-			}
-		});
-	}
-	else {
-		res.redirect("back");
-	}	
-};
 
 module.exports = router;
