@@ -1,38 +1,27 @@
-<% include ../partials/header %>
- <div class="container">  
-   <ul class="nav justify-content-between">     
-        <li class="nav-item">
-            <a class="nav-link" href="/geektalks/Computer Science">Computer Science</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/geektalks/Modern Web">Modern Web</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/geektalks/Mobile App">Mobile App</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/geektalks/AI and Data">AI and Data</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/geektalks/Embedded System">Embedded System</a>
-        </li>    
-        <li class="nav-item">
-            <a class="nav-link" href="/geektalks/Entertainment">Entertainment</a>
-        </li>           
-    </ul> 
-  </div>  
+<% include ../partials/index_header %>
+ <div id = "link-tag" class="container">  
+    <div class="nav-scroller py-1 mb-2 mx-1">
+      <nav class="nav d-flex justify-content-between">
+          <a class="p-2 text-muted" href="/geektalks/Computer Science">Computer Science</a>
+          <a class="p-2 text-muted" href="/geektalks/Modern Web">Modern Web</a>
+          <a class="p-2 text-muted" href="/geektalks/Mobile App">Mobile App</a>
+          <a class="p-2 text-muted" href="/geektalks/AI and Data">AI and Data</a>
+          <a class="p-2 text-muted" href="/geektalks/Embedded System">Embedded System</a>   
+          <a class="p-2 text-muted" href="/geektalks/Entertainment">Entertainment</a> 
+      </nav>
+    </div> 
 
   <div class="container">   
     <div class="jumbotron p-3 p-md-5 mt-2 text-black rounded">
       <div class="col-md-6 px-0">
         <h1 id = "welcome-message" class="display-4 font-italic">Welcome to GeekTalks, let's inspire together</h1>
         <p id = "welcome-message" class="lead my-3">The place to share your projects, development experiences and reflection on your learning</p>
-        <p class="lead mb-0"><a href="#" class="btn btn-light">Get Start</a></p>
+        <p class="lead mb-0"><a href="/login" class="btn btn-light">Get Start</a></p>
       </div>
     </div>
   </div>
   
-  <main role="main" class="container">
+  <main role="main" class="container mb-4">
     <div class="row">
       <div class="col-md-7 blog-main">
         <h3 class="pb-3 mb-4 font-italic border-bottom">
@@ -58,7 +47,7 @@
 
       <aside class="col-md-5 blog-sidebar">
         <div class="p-3 mb-3 rounded">
-          <h4 class="font-italic text-center">The top 5 talks</h4>
+          <h3 class="font-italic text-center pb-3 mb-4">The top 5 talks</h3>
           <ol>
             <% if (ratingTalks) { %>
               <% ratingTalks.forEach(function(talk, index) { %>
@@ -83,4 +72,4 @@
     </div><!-- /.row -->
 
   </main><!-- /.container -->
-<% include ../partials/footer %>
+<% include ../partials/index_footer %>

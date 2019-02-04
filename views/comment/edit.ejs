@@ -3,9 +3,9 @@
 <form class="new-form" action="/geektalks/<%=tag_id%>/<%=talk_id%>/comments/<%=comment._id%>?_method=PUT" method="POST">
 	<div class="form-group">
 		<label>Comment</label>
-		<textarea class="form-control" name="comment[text]" rows="5" cols="33"><%=comment.text%></textarea>
+		<textarea class="form-control" name="comment[text]" rows="4" cols="33"><%=comment.text%></textarea>
 	</div>	
-	<button class="btn btn-primary">Submit</button>
+	<button class="btn btn-primary btn-block">Submit</button>
 </form>	
 <div class="new-form">
 <a href="/geektalks/<%=tag_id%>/<%=talk_id%>/">Go back</a>

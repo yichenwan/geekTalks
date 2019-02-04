@@ -38,7 +38,7 @@
 	                </div><br>	                
 	                <div class="d-flex justify-content-end">
 						<% if (currentUser && talks[i].user.equals(currentUser._id)) { %>
-							<a button class="btn btn-primary" href="/geektalks/<%=talks[i].tag%>/<%=talks[i].id%>/edit">Edit</a>    
+							<a button class="btn btn-success" href="/geektalks/<%=talks[i].tag%>/<%=talks[i].id%>/edit">Edit</a>  
 							<form id="delete-form" action="/geektalks/<%=talks[i].tag%>/<%=talks[i].id%>/?_method=DELETE" method="POST">
 								<button class="btn btn-danger">Delete</button>
 							</form>	

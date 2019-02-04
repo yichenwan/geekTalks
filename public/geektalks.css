@@ -1,5 +1,11 @@
 /* stylelint-disable selector-list-comma-newline-after */
 /*index layout*/
+.content {
+   height: 100%;
+  padding-top: 40px;
+  padding-bottom: 40px;    
+ } 
+
 
 .blog-header {
   line-height: 1;

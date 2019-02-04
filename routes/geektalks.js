@@ -57,7 +57,17 @@
 		 		}
 		 		else {
 		 			// console.log(foundTalks);
- 					res.render("geekTalks/showTag", {talks: foundTalks, foundTag: foundTag});
+		 			Talk.find({tag: req.params.tag}).sort({countLike: -1}).limit(5).populate("user").exec(function(err, ratingTalks) {
+				    	if (err) {
+				    		console.log(err);
+				    		res.redirect("/");
+				    	}
+				    	else {
+				    		// console.log(talks);
+				    		// console.log(ratingTalks);
+				    	   	res.render("geekTalks/showTag", {tagTitle:req.params.tag, talks: foundTalks, foundTag: foundTag, ratingTalks: ratingTalks});
+				    	}
+				    });		 			
 		 		}
  			});
  		}
