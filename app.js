@@ -18,7 +18,8 @@ var bodyParser       = require("body-parser"),
 
 var geektalkRoutes   = require("./routes/geektalks"),
 	commentRoutes    = require("./routes/comments"),
-	indexRoutes      = require("./routes/index");
+	indexRoutes      = require("./routes/index"),
+	reviewRoutes     = require("./routes/reviews");
 
 
 // app config
@@ -58,6 +59,7 @@ passport.deserializeUser(User.deserializeUser());
 app.use("/geektalks", geektalkRoutes);
 app.use("/geektalks/:tag/:id/comments", commentRoutes);
 app.use("/", indexRoutes);
+app.use("/geektalks/:tag/:id/reviews", reviewRoutes);
 
 app.listen(3000, process.env.IP, function(){
     console.log("SERVER IS RUNNING!");

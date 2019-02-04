@@ -30,7 +30,10 @@
                 <p><a class="btn btn-primary" href="/geektalks/<%=talks[i].tag%>/<%=talks[i]._id%>">
                 Read More
                 </a></p>
-                <p>Tag: <a href="/geektalks/<%=talks[i].tag%>" class="tag-title"><%=talks[i].tag%></a></p>
+                <p class="icon-list-reverse">Tag: <a href="/geektalks/<%=talks[i].tag%>" class="tag-title"><%=talks[i].tag%></a></p>
+                <div id="like-list-color" class="icon-list">
+                  <%= talks[i].countLike%><%=" "%><i class="far fa-thumbs-up"></i>    
+                </div>                
               </div>
             </div>
           <% } %>  

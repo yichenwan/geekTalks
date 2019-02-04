@@ -11,7 +11,17 @@
  			console.log("error");
  		}
  		else {
- 			res.render("geekTalks/index", {talks: talks});
+ 			Talk.find({}).sort({countLike: -1}).limit(5).populate("user").exec(function(err, ratingTalks) {
+		    	if (err) {
+		    		console.log(err);
+		    		res.redirect("/");
+		    	}
+		    	else {
+		    		// console.log(talks);
+		    		// console.log(ratingTalks);
+		    	   	res.render("geekTalks/index", {talks: talks, ratingTalks: ratingTalks});
+		    	}
+		    });
  		}
  	});
  });
@@ -46,7 +56,7 @@
 		 			res.redirect("/geektalks");
 		 		}
 		 		else {
-		 			console.log(foundTalks);
+		 			// console.log(foundTalks);
  					res.render("geekTalks/showTag", {talks: foundTalks, foundTag: foundTag});
 		 		}
  			});
@@ -55,7 +65,7 @@
  }); 
 
  router.get("/:tag/:id", function(req, res) {
- 	Talk.findById(req.params.id).populate("comments").populate("user").exec(function(err, foundTalk) {
+ 	Talk.findById(req.params.id).populate("comments").populate("user").populate("likes").exec(function(err, foundTalk) {
  		if (err) {
  			res.redirect("/geektalks");
  		}

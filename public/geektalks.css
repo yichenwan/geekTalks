@@ -174,3 +174,43 @@ h1, h2, h3, h4, h5, h6 {
 .profile-body{
   padding: ;
 }
+
+#icon-size {
+  font-size: 20px;
+}
+
+#icon-color {
+  color: blue;
+}
+
+.icon-list {
+  float: right;
+}
+
+.icon-list-reverse {
+  float: left;
+}
+
+#like-color {
+  color: #ff6666;
+  font-size: 20px;  
+  float: left;
+}
+
+#like-list-color {
+  color: #ff6666;
+  font-size: 15px;  
+}
+
+#rank-title {
+ text-decoration: none;  
+ color: black;
+}
+
+#rank-author {
+ text-decoration: none;  
+}
+
+.day-size{
+  font-size: 0.8rem;
+}

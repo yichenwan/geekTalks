@@ -3,7 +3,7 @@
   <div class="col-md-2">
   </div>
   <div class="col-md-8">
-	  <div class="card mb-3">
+	  <div class="card mb-3 border-0">
 	      <div class="row">
 	          <div class="col-md-8">
 	              <div class="card-block my-4 px-3 ">
@@ -13,7 +13,7 @@
 	              </div>
 	          </div>      
 	          <div class="col-md-4 py-2">
-	              <img src="<%=user.avatar%>" class="profile-img" alt="">
+	              <img src="<%=user.avatar%>" class="rounded-circle">
 	          </div>
 	      </div>
 	  </div> 
@@ -32,7 +32,10 @@
 	                <p><a class="btn btn-primary" href="/geektalks/<%=talks[i].tag%>/<%=talks[i]._id%>">
 	                Read More
 	                </a></p>
-	                <p>Tag: <a href="/geektalks/<%=talks[i].tag%>" class="tag-title"><%=talks[i].tag%></a></p>
+	                <p class="icon-list-reverse">Tag: <a href="/geektalks/<%=talks[i].tag%>" class="tag-title"><%=talks[i].tag%></a></p>
+	                <div id="like-list-color" class="icon-list">
+	                  <%= talks[i].countLike%><%=" "%><i class="far fa-thumbs-up"></i>    
+	                </div><br>	                
 	                <div class="d-flex justify-content-end">
 						<% if (currentUser && talks[i].user.equals(currentUser._id)) { %>
 							<a button class="btn btn-primary" href="/geektalks/<%=talks[i].tag%>/<%=talks[i].id%>/edit">Edit</a>    
