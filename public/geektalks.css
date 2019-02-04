@@ -164,3 +164,13 @@ h1, h2, h3, h4, h5, h6 {
 #delete-form {
   display: inline;  
 }
+
+.profile-style {
+  width: 180px;
+  max-width: 150px;
+  height: 200px;
+}
+
+.profile-body{
+  padding: ;
+}

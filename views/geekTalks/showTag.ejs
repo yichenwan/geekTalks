@@ -25,7 +25,7 @@
             <div class="card mb-1">
               <div class="card-body">
                 <h2 class="card-title"><%=talks[i].title%></h2> 
-                <p class="card-text blog-post-meta"><%=talks[i].created.toDateString()%> by <a href="#"><%=talks[i].user.username%></a></p>
+                <p class="card-text blog-post-meta"><%=talks[i].created.toDateString()%> by <a href="/user/<%=talks[i].user._id%>"><%=talks[i].user.username%></a></p>
                 <p class="card-text"><%- talks[i].body.substring(0, 100)%></p>
                 <p><a class="btn btn-primary" href="/geektalks/<%=talks[i].tag%>/<%=talks[i]._id%>">
                 Read More

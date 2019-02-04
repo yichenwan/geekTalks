@@ -1,0 +1,58 @@
+<% include ../partials/header %>
+<div class="row my-2">
+  <div class="col-md-2">
+  </div>
+  <div class="col-md-8">
+	  <div class="card mb-3">
+	      <div class="row">
+	          <div class="col-md-8">
+	              <div class="card-block my-4 px-3 ">
+	                  <h4 class="card-title"><%=user.username%></h4>
+	                  <p class="card-text"><%=user.description%></p>
+	                  <a href="<%=user.github%>"><i class="fab fa-github"></i></a><br>                
+	              </div>
+	          </div>      
+	          <div class="col-md-4 py-2">
+	              <img src="<%=user.avatar%>" class="profile-img" alt="">
+	          </div>
+	      </div>
+	  </div> 
+
+     <div class="blog-main">
+        <h3 class="pb-3 mb-4 font-italic border-bottom">
+          Newest Post
+        </h3>
+          <% if (talks) { %>
+	          <% for (let i = talks.length - 1; i > -1; i--) { %>
+	            <div class="card mb-1">
+	              <div class="card-body">
+	                <h2 class="card-title"><%=talks[i].title%></h2> 
+	                <p class="card-text blog-post-meta"><%=talks[i].created.toDateString()%>
+	                <p class="card-text"><%- talks[i].body.substring(0, 100)%></p>
+	                <p><a class="btn btn-primary" href="/geektalks/<%=talks[i].tag%>/<%=talks[i]._id%>">
+	                Read More
+	                </a></p>
+	                <p>Tag: <a href="/geektalks/<%=talks[i].tag%>" class="tag-title"><%=talks[i].tag%></a></p>
+	                <div class="d-flex justify-content-end">
+						<% if (currentUser && talks[i].user.equals(currentUser._id)) { %>
+							<a button class="btn btn-primary" href="/geektalks/<%=talks[i].tag%>/<%=talks[i].id%>/edit">Edit</a>    
+							<form id="delete-form" action="/geektalks/<%=talks[i].tag%>/<%=talks[i].id%>/?_method=DELETE" method="POST">
+								<button class="btn btn-danger">Delete</button>
+							</form>	
+						<% } %>	 
+					</div>               
+	              </div>
+	            </div>
+	          <% } %> 
+	         <% } %> 
+        <nav class="blog-pagination mt-4">
+          <a class="btn btn-outline-primary" href="#">Older</a>
+          <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
+        </nav>
+      </div><!-- /.blog-main -->    
+  </div>
+  <div class="col-md-2">
+  </div>	 
+</div>        
+
+<% include ../partials/footer %>
