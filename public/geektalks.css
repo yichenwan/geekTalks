@@ -208,6 +208,17 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 15px;  
 }
 
+#comment-color {
+  color: #57C811;
+  float: left;  
+  font-size: 20px;
+}
+
+#comment-icon-color {
+  color: #57C811;
+  font-size: 15px;  
+}
+
 #rank-title {
  text-decoration: none;  
  color: black;

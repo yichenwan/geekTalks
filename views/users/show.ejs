@@ -33,9 +33,10 @@
 	                Read More
 	                </a></p>
 	                <p class="icon-list-reverse">Tag: <a href="/geektalks/<%=talks[i].tag%>" class="tag-title"><%=talks[i].tag%></a></p>
-	                <div id="like-list-color" class="icon-list">
-	                  <%= talks[i].countLike%><%=" "%><i class="far fa-thumbs-up"></i>    
-	                </div><br>	                
+		                <div class="icon-list">
+		                  <i id="comment-icon-color" class="far fa-comment-alt"></i><span id="comment-icon-color"><%=" "%><%= talks[i].comments.length%></span>
+		                  <i id="like-list-color" class="far fa-thumbs-up"></i><%=" "%><span id="like-list-color"><%= talks[i].countLike%><%=" "%></span>    
+	                </div> <br>	                
 	                <div class="d-flex justify-content-end">
 						<% if (currentUser && talks[i].user.equals(currentUser._id)) { %>
 							<a button class="btn btn-success" href="/geektalks/<%=talks[i].tag%>/<%=talks[i].id%>/edit">Edit</a>  

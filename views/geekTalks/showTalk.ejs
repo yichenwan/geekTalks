@@ -12,10 +12,13 @@
 			</div>		
 			<div>		
 				<ul id="icon-size" class="icon-list-reverse nav">
-					<li id="like-color" class="nav-item">
-						<%= talk.countLike%><%=" "%><i class="far fa-thumbs-up"></i>		
+					<li id="comment-color" class="nav-item">				
+                  		<i class="far fa-comment-alt"></i><%=" "%><%= talk.comments.length%>	
+					</li>        				          					
+					<li id="like-color" class="nav-item pl-2">
+						<i class="far fa-thumbs-up"></i><%=" "%><%= talk.countLike%>		
 					</li>
-				</ul>
+				</ul>			
 				<ul id="icon-size" class="icon-list nav">
 					<li class="nav-item">
 						<% if (currentUser) { %>
