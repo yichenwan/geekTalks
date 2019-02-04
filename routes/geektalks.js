@@ -6,7 +6,7 @@
 
 
  router.get("/", function(req, res) {
- 	Talk.find({}).populate("user").exec(function(err, talks) {
+ 	Talk.find({}).sort({createdAt: -1}).populate("user").limit(5).exec(function(err, talks) {
  		if (err) {
  			console.log("error");
  		}
@@ -46,7 +46,7 @@
 
  router.get("/:tag/", function(req, res) {
  	Talk.find(
- 		{tag: req.params.tag}).populate("user").exec(function(err, foundTalks) {
+ 		{tag: req.params.tag}).sort({createdAt: -1}).limit(5).populate("user").exec(function(err, foundTalks) {
  		if (err) {
  			res.redirect("/geektalks");
  		}
