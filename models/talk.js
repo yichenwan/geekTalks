@@ -13,7 +13,7 @@
  		type: mongoose.Schema.Types.ObjectId,
  		ref: "Comment"
  	}],
- 	created: {type: Date, default: Date.now}
+ 	createdAt: {type: Date, default: Date.now}
  });
 
 module.exports = mongoose.model("Talk", talkSchema);

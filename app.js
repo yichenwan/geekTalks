@@ -13,7 +13,8 @@ var bodyParser       = require("body-parser"),
     passport         = require("passport"),
     LocalStrategy    = require("passport-local"),
     passportLocalMongoose = require("passport-local-mongoose"),
-    flash            = require("connect-flash");
+    flash            = require("connect-flash"),
+    moment           = require("moment");
 
 var geektalkRoutes   = require("./routes/geektalks"),
 	commentRoutes    = require("./routes/comments"),
@@ -49,6 +50,7 @@ passport.deserializeUser(User.deserializeUser());
  	res.locals.currentUser = req.user;
  	res.locals.error = req.flash("error");
  	res.locals.success = req.flash("success");
+ 	res.locals.moment = moment;
  	next();
  });
 

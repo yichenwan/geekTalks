@@ -6,7 +6,7 @@
 			<div class="card px-1 border-0">
 			  <div class="card-body">
 			    <h2 class="card-title text-center"><%=talk.title%></h2>
-			    <p class="card-text blog-post-meta text-center"><%=talk.created.toDateString()%> by <a href="/user/<%=talk.user._id%>"><%=talk.user.username%></a></p>
+			    <p class="card-text blog-post-meta text-center"><%=talk.createdAt.toDateString()%> by <a href="/user/<%=talk.user._id%>"><%=talk.user.username%></a></p>
 			    <p class="card-text"><%- talk.body%></p>
 			  </div>
 			</div>
@@ -29,7 +29,7 @@
 		      <hr>			  
 				<% talk.comments.forEach(function(comment) { %>
 					<strong class="card-title"><%= comment.author.username%></strong>
-					<p class="card-text float-right">10 days ago</p><br>
+					<p class="card-text float-right"><%= moment(comment.createdAt).fromNow()%></p><br>
 					<p class="card-text"><%= comment.text%></p>
 					<% if (currentUser && comment.author.id.equals(currentUser._id)) {%>
 					  	<a href="/geektalks/<%=talk.tag%>/<%=talk._id%>/comments/<%=comment._id%>/edit" 
