@@ -57,7 +57,7 @@ router.get("/user/:user_id", function(req, res) {
 		else {
 			Talk.find({
 				user: new mongoose.Types.ObjectId(req.params.user_id)
-			}).sort({createdAt: -1}).limit(5).exec(function(err, foundTalks) {
+			}).sort({createdAt: -1}).exec(function(err, foundTalks) {
 				if (err) {
 					console.log(err);
 					res.render("/");
