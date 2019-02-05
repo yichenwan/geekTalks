@@ -10,6 +10,7 @@
           <a class="p-2 text-muted" href="/geektalks/Entertainment">Entertainment</a> 
       </nav>
     </div> 
+  </div>
 
   <div class="container">   
     <div class="jumbotron p-3 p-md-5 mt-2 text-black rounded">
@@ -49,7 +50,7 @@
       <aside class="col-md-5 blog-sidebar">
         <div class="p-3 mb-3 rounded">
           <h3 class="font-italic text-center pb-3 mb-4">The top 5 talks</h3>
-          <ol>
+          <ul>
             <% if (ratingTalks) { %>
               <% ratingTalks.forEach(function(talk, index) { %>
                 <div class="my-1">
@@ -71,6 +72,5 @@
       </aside><!-- /.blog-sidebar -->
 
     </div><!-- /.row -->
-
   </main><!-- /.container -->
 <% include ../partials/index_footer %>
