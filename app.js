@@ -52,6 +52,7 @@ passport.deserializeUser(User.deserializeUser());
  	res.locals.error = req.flash("error");
  	res.locals.success = req.flash("success");
  	res.locals.moment = moment;
+ 	res.locals.talk   = null;
  	next();
  });
 

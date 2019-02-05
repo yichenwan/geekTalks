@@ -9,6 +9,10 @@ var commentSchema  = mongoose.Schema({
 		},
 		username: String	
 	},
+ 	talk :{
+ 		type: mongoose.Schema.Types.ObjectId,
+ 		ref: "Talk"
+ 	},	
  	createdAt: {type: Date, default: Date.now}	
 });
 

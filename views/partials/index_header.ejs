@@ -15,7 +15,7 @@
 		  </button>
 		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 		    <ul class="navbar-nav mr-auto">
-		    <% if (typeof talk != "undefined") { %>
+		    <% if (talk) { %>
 		      <li class="nav-item">
 		        <a class="nav-link" href="/geektalks/<%=talk.tag%>"><%=talk.tag%></a>
 		      </li>

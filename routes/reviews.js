@@ -56,7 +56,7 @@
  	else {
  		var count = 0;
  		likes.forEach(function(like){
- 			// console.log(like.state);
+ 			 // console.log(like.state);
  			if (like.state === true)
  				count++; 
  		});

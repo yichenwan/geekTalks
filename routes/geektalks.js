@@ -2,8 +2,10 @@
  var router  = express.Router({mergeParams: true});
  var Talk    = require("../models/talk");
  var Tag     = require("../models/tag");
+ var Comment = require("../models/comment");
+ var Like    = require("../models/like");
  var middleware = require("../middleware");
-
+ var mongoose = require("mongoose");
 
  router.get("/", function(req, res) {
  	Talk.find({}).sort({createdAt: -1}).populate("user").limit(5).exec(function(err, talks) {
@@ -105,10 +107,18 @@
  });
 
  router.delete("/:tag/:id", middleware.checkTalkOwenership,function(req, res) {
- 	Talk.findByIdAndRemove(req.params.id, function(err) {
- 		req.flash("success", "talk deleted");
- 		res.redirect("/geektalks");
- 	});
+ 	Like.remove({
+ 		talk : new mongoose.Types.ObjectId(req.params.id)
+ 	}, function(err) {
+ 		Comment.remove({
+ 			talk : new mongoose.Types.ObjectId(req.params.id)
+ 		}, function(err) {
+		 	Talk.findByIdAndRemove(req.params.id, function(err) {
+		 		req.flash("success", "talk deleted");
+		 		res.redirect("/geektalks");
+		 	});
+ 		})
+ 	})
  });
 
 module.exports = router;
