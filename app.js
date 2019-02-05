@@ -21,9 +21,10 @@ var geektalkRoutes   = require("./routes/geektalks"),
 	indexRoutes      = require("./routes/index"),
 	reviewRoutes     = require("./routes/reviews");
 
+const port = process.env.PORT || 3000;
 
 // app config
- mongoose.connect("mongodb://localhost:27017/geek_talk_app", {useNewUrlParser: true});
+ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/geek_talk_app", {useNewUrlParser: true});
  app.set("view engine", "ejs");
  app.use(express.static("public"));
  app.use(bodyParser.urlencoded({extended: true}));
@@ -62,7 +63,7 @@ app.use("/geektalks/:tag/:id/comments", commentRoutes);
 app.use("/", indexRoutes);
 app.use("/geektalks/:tag/:id/reviews", reviewRoutes);
 
-app.listen(3000, process.env.IP, function(){
+app.listen(port, process.env.IP, function(){
     console.log("SERVER IS RUNNING!");
 });
 
