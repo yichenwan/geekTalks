@@ -2,7 +2,7 @@
 
 ## Introduction
 *	Create a website to encourage people to share projects, development experiences and reflection on their learning
-*	The design ideas are inspired by Medium and the article[3]
+*	The design ideas are inspired by Medium and the article[2]
 ## Features of GeekTalks
 * The Basic actions(get, post, update, delete) on the post, and comment
 * Comment
@@ -24,5 +24,5 @@
 
 
 ## References
-* Bootstrap template from mdo [https://twitter.com/mdo]
-* 40 Side Project Ideas for Software Engineers [https://www.codementor.io/npostolovski/40-side-project-ideas-for-software-engineers-g8xckyxef]
+1. Bootstrap examples [https://getbootstrap.com/docs/4.3/examples/]
+2. 40 Side Project Ideas for Software Engineers [https://www.codementor.io/npostolovski/40-side-project-ideas-for-software-engineers-g8xckyxef]
